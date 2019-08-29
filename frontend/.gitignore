@@ -8,6 +8,9 @@ dist
 
 *.log
 *.zip
+haters/
+.next/
+.build/
 
 # testing
 /coverage
