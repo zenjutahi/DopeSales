@@ -4,5 +4,8 @@
     "titleBar.inactiveForeground": "#000000CC",
     "titleBar.activeBackground": "#00c3ff",
     "titleBar.inactiveBackground": "#00c3ff"
-  }
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
 }
