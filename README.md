@@ -1,5 +1,5 @@
-##FRONTEND
-#React.js <> Apollo Client
+## FRONTEND
+#### React.js <> Apollo Client
 
-##BACKEND
-#GraphQL Yoga <> Prisma
+## BACKEND
+#### GraphQL Yoga <> Prisma
