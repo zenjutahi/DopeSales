@@ -7,10 +7,10 @@ const Title = styled.h3`
   margin-top: -3rem;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
   a {
-    background: ${props => props.theme.red};
+    background: ${props => props.theme.blue};
     display: inline;
     line-height: 1.3;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
     color: white;
     padding: 0 1rem;
