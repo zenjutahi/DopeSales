@@ -57,11 +57,11 @@ const Form = styled.form`
       height: 10px;
       content: '';
       display: block;
-      background-image: linear-gradient(to right, #1E90FF 0%, #FF00FF 50%, #1E90FF 100%);
+      background-image: linear-gradient(to right, #1E90FF 0%, #00FFFF 50%, #1E90FF 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;
-      animation: ${loading} 0.5 s linear infinite;
+      animation: ${loading} 0.5s linear infinite;
     }
   }
 `;
