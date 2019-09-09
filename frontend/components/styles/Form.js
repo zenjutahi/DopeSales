@@ -33,7 +33,7 @@ const Form = styled.form`
     border: 1px solid black;
     &:focus {
       outline: 0;
-      border-color: ${props => props.theme.red};
+      border-color: ${props => props.theme.blue};
     }
   }
   button,
@@ -57,11 +57,11 @@ const Form = styled.form`
       height: 10px;
       content: '';
       display: block;
-      background-image: linear-gradient(to right, #1E90FF 0%, #9370DB 50%, #1E90FF 100%);
+      background-image: linear-gradient(to right, #1E90FF 0%, #FF00FF 50%, #1E90FF 100%);
     }
     &[aria-busy='true']::before {
       background-size: 50% auto;
-      animation: ${loading} 0.5s linear infinite;
+      animation: ${loading} 0.5 s linear infinite;
     }
   }
 `;
