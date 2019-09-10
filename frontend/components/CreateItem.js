@@ -31,8 +31,8 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
     state = {
-        title: 'Cool Socks',
-        description: 'In general, the details of Aristotles life are not well-established',
+        title: '',
+        description: '',
         image: '',
         largeImage: '',
         price: 96730,
