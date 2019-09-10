@@ -14,12 +14,12 @@ const NavStyles = styled.ul`
     position: relative;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 1em;
+    font-size: 0.8em;
     background: none;
     border: 0;
     cursor: pointer;
     @media (max-width: 700px) {
-      font-size: 10px;
+      font-size: 1px;
       padding: 0 10px;
     }
     &:before {
