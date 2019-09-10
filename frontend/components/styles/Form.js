@@ -23,6 +23,12 @@ const Form = styled.form`
   label {
     display: block;
     margin-bottom: 1rem;
+    img {
+      width: 180px;
+      border: 3px solid whitesmoke;
+      display: block;
+      padding: 0.3em;
+    }
   }
   input,
   textarea,
