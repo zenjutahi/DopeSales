@@ -24,7 +24,6 @@ const CREATE_ITEM_MUTATION = gql`
         )
         {
             id
-            title
         }
     }
 `;
