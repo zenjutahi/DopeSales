@@ -25,6 +25,7 @@ const Form = styled.form`
     margin-bottom: 1rem;
     img {
       width: 180px;
+      object-fit: contain;
       border: 3px solid whitesmoke;
       display: block;
       padding: 0.3em;
