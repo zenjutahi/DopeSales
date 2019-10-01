@@ -3,6 +3,7 @@ import { mutation, Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
+import { CURRENT_USER_QUERY } from "./User";
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -29,7 +30,11 @@ class Signup extends Component {
   };
   render() {
     return (
-      <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={SIGNUP_MUTATION}
+        variables={this.state}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(signup, { error, loading }) => {
           return (
             <Form
@@ -54,29 +59,28 @@ class Signup extends Component {
                     onChange={this.saveToState}
                   />
                 </label>
+                <label htmlFor="name">
+                  Name
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="name"
+                    value={this.state.name}
+                    onChange={this.saveToState}
+                  />
+                </label>
+                <label htmlFor="password">
+                  Password
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                    value={this.state.password}
+                    onChange={this.saveToState}
+                  />
+                </label>
+                <button type="submit">Sign Up!</button>
               </fieldset>
-              <label htmlFor="name">
-                Name
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="name"
-                  value={this.state.name}
-                  onChange={this.saveToState}
-                />
-              </label>
-              <label htmlFor="password">
-                Password
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  value={this.state.password}
-                  onChange={this.saveToState}
-                />
-              </label>
-
-              <button type="submit">Sign Up!</button>
             </Form>
           );
         }}
