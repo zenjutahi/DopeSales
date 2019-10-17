@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-
+import FlashMessage from "react-flash-message";
 import PropTypes from "prop-types";
 
 const ErrorStyles = styled.div`
@@ -35,12 +35,14 @@ const DisplayError = ({ error }) => {
     ));
   }
   return (
-    <ErrorStyles>
-      <p data-test="graphql-error">
-        <strong>Shoot!</strong>
-        {error.message.replace("GraphQL error: ", "")}
-      </p>
-    </ErrorStyles>
+    <FlashMessage duration={5000}>
+      <ErrorStyles>
+        <p data-test="graphql-error">
+          <strong>Shoot!</strong>
+          {error.message.replace("GraphQL error: ", "")}
+        </p>
+      </ErrorStyles>
+    </FlashMessage>
   );
 };
 
