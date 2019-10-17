@@ -31,15 +31,15 @@ class Signin extends Component {
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(signup, { error, loading }) => {
+        {(signin, { error, loading }) => {
           return (
             <Form
               method="post"
               onSubmit={async e => {
                 e.preventDefault();
-                const res = await signup();
+                const res = await signin();
                 console.log(res);
-                this.setState({ name: "", email: "", password: "" });
+                this.setState({ email: "", password: "" });
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
