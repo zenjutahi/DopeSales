@@ -26,6 +26,7 @@ class Signup extends Component {
     password: ""
   };
   saveToState = e => {
+    console.log([e.target.name]);
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
