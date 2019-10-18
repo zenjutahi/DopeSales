@@ -4,10 +4,16 @@ import FlashMessage from "react-flash-message";
 import PropTypes from "prop-types";
 
 const ErrorStyles = styled.div`
-  padding: 2rem;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: rgb(255, 249, 242);
+  text-align: center;
+  padding: 1rem;
   background: white;
   margin: 2rem 0;
-  border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 5px solid red;
   p {
     margin: 0;
@@ -35,7 +41,7 @@ const DisplayError = ({ error }) => {
     ));
   }
   return (
-    <FlashMessage duration={6000}>
+    <FlashMessage duration={10000}>
       <ErrorStyles>
         <p data-test="graphql-error">
           <strong>Shoot!</strong>
