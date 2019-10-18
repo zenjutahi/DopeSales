@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { mutation, Mutation } from "react-apollo";
+import Router from "next/router";
 import gql from "graphql-tag";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
@@ -40,6 +41,7 @@ class Signin extends Component {
                 const res = await signin();
                 console.log(res);
                 this.setState({ email: "", password: "" });
+                Router.push(`/items`);
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
