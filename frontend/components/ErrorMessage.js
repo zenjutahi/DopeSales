@@ -35,7 +35,7 @@ const DisplayError = ({ error }) => {
     ));
   }
   return (
-    <FlashMessage duration={5000}>
+    <FlashMessage duration={6000}>
       <ErrorStyles>
         <p data-test="graphql-error">
           <strong>Shoot!</strong>
