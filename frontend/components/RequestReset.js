@@ -1,23 +1,10 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import styled from "styled-components";
 import FlashMessage from "react-flash-message";
 import gql from "graphql-tag";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
-
-const Smessage = styled.div`
-  border: 1px solid #d8d8d8;
-  padding: 10px;
-  border-radius: 5px;
-  font-family: Arial;
-  font-size: 11px;
-  text-transform: uppercase;
-  background-color: rgb(236, 255, 216);
-  color: green;
-  text-align: center;
-  margin-top: -10px;
-`;
+import SMessage from "./styles/SMessage";
 
 const REQUEST_RESET_MUTATION = gql`
   mutation REQUEST_RESET_MUTATION($email: String!) {
@@ -53,9 +40,9 @@ class RequestReset extends Component {
                 <Error error={error} />
                 {!error && !loading && called && (
                   <FlashMessage duration={4000}>
-                    <Smessage>
+                    <SMessage>
                       Success! Check your email for the reset link!
-                    </Smessage>
+                    </SMessage>
                   </FlashMessage>
                 )}
                 <label htmlFor="email">
