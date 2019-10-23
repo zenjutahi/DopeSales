@@ -67,7 +67,7 @@ class User extends React.Component {
         {possiblePermissions.map(permission => (
           <td>
             <label htmlFor={`${user.id}-permission-${permission}`}>
-              <input type="checkox" />
+              <input type="checkbox" />
             </label>
           </td>
         ))}
