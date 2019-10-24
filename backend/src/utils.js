@@ -11,6 +11,7 @@ function hasPermission(user, permissionsNeeded) {
 
       ${user.permissions}
       `);
+    return;
   }
 }
 
