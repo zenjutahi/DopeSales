@@ -174,6 +174,12 @@ const Mutations = {
     });
     // 8. Return new user
     return updatedUser;
+  },
+  async updatePermissions(parent, args, ctx, info) {
+    // 1. Check if they are logged in
+    // 2. Query the current user
+    // 3. Check if they have permissions o do this
+    // 4. Update he permissions
   }
 };
 
