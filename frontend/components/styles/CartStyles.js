@@ -5,7 +5,7 @@ const CartStyles = styled.div`
   position: relative;
   background: white;
   position: fixed;
-  height: 100%;
+  height: 90%;
   top: 0;
   right: 0;
   width: 40%;
