@@ -24,7 +24,7 @@ const Query = {
       throw new Error("You must be logged in!");
     }
     // Check if the user has permission  to query all the users
-    hasPermission(ctx.request.user, ["ADMIN", "PERMISSIONUPDATE"]);
+    hasPermission(ctx.request.user, ["ADMIN", "PERMISSIONUPDATE", "BOSS"]);
     // If true then Query all the users
     return ctx.db.query.users({}, info);
   }
