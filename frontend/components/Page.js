@@ -50,6 +50,9 @@ injectGlobal`
         text-decoration: none;
         color: ${theme.black};
     }
+    p {
+      font-size: 13px;
+    }
 `;
 
 class Page extends Component {
