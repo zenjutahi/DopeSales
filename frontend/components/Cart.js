@@ -49,7 +49,7 @@ const Cart = () => (
                     ))}
                   </ul>
                   <footer>
-                    <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+                    <h6>{formatMoney(calcTotalPrice(me.cart))}</h6>
                     <SickButton>Checkout</SickButton>
                   </footer>
                 </CartStyles>
