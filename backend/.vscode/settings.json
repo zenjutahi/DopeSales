@@ -4,4 +4,5 @@
     "titleBar.inactiveBackground": "#d43ab3cc"
   },
   "editor.formatOnSave": true,
+  "emmet.triggerExpansionOnTab": true
 }
