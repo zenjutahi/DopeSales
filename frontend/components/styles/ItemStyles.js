@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Item = styled.div`
   background: white;
@@ -18,7 +18,7 @@ const Item = styled.div`
     font-weight: 300;
     flex-grow: 1;
     padding: 0 3rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .buttonList {
     display: grid;
