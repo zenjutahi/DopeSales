@@ -12,7 +12,7 @@ const SEARCH_ITEMS_QUERY = gql`
       where: {
         OR: [
           { title_contains: $searchTerm }
-          { descrition_contains: $searchTerm }
+          { description_contains: $searchTerm }
         ]
       }
     ) {
@@ -24,17 +24,46 @@ const SEARCH_ITEMS_QUERY = gql`
 `;
 
 class AutoComplete extends React.Component {
+  state = {
+    items: [],
+    loading: false
+  };
+  onChange = debounce(async (e, client) => {
+    console.log("Searching....");
+    //Turn loading on
+    this.setState({ loading: true });
+    // manually query apollo client
+    const res = await client.query({
+      query: SEARCH_ITEMS_QUERY,
+      variables: { searchTerm: e.target.value }
+    });
+    this.setState({
+      items: res.data.items,
+      loading: false
+    });
+  }, 350);
   render() {
     return (
       <SearchStyles>
         <div>
           <ApolloConsumer>
             {client => (
-              <input type="search" onChange={() => console.log(client)} />
+              <input
+                type="search"
+                onChange={e => {
+                  e.persist();
+                  this.onChange(e, client);
+                }}
+              />
             )}
           </ApolloConsumer>
           <DropDown>
-            <p>Items will go here</p>
+            {this.state.items.map(item => (
+              <DropDownItem key={item.id}>
+                <img width="50" src={item.image} alt={item.title} />
+                {item.title}
+              </DropDownItem>
+            ))}
           </DropDown>
         </div>
       </SearchStyles>
