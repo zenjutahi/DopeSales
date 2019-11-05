@@ -23,6 +23,15 @@ const SEARCH_ITEMS_QUERY = gql`
   }
 `;
 
+function routeToItem(item) {
+  Router.push({
+    pathname: "/item",
+    query: {
+      id: item.id
+    }
+  });
+}
+
 class AutoComplete extends React.Component {
   state = {
     items: [],
@@ -45,7 +54,10 @@ class AutoComplete extends React.Component {
   render() {
     return (
       <SearchStyles>
-        <Downshift>
+        <Downshift
+          onChange={routeToItem}
+          itemToString={item => (item === null ? "" : item.title)}
+        >
           {({
             getInputProps,
             getItemProps,
@@ -83,6 +95,9 @@ class AutoComplete extends React.Component {
                       {item.title}
                     </DropDownItem>
                   ))}
+                  {!this.state.items.length && !this.state.loading && (
+                    <DropDownItem>Nothing Found for {inputValue}</DropDownItem>
+                  )}
                 </DropDown>
               )}
             </div>
