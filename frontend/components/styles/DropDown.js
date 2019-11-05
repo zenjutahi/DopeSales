@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const DropDown = styled.div`
   position: absolute;
-  width: 50%;
+  width: 40%;
   z-index: 2;
   border: 1px solid ${props => props.theme.lightgrey};
   border-radius: 30px;
@@ -36,7 +36,7 @@ const glow = keyframes`
 const SearchStyles = styled.div`
   position: relative;
   input {
-    width: 50%;
+    width: 40%;
     border-radius: 30px;
     padding: 10px;
     border: 0;
