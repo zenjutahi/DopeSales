@@ -42,6 +42,9 @@ const CartStyles = styled.div`
     list-style: none;
     overflow: scroll;
   }
+  button {
+    margin-left: 15rem;
+  }
 `;
 
 export default CartStyles;
