@@ -40,7 +40,7 @@ const Query = {
       },
       info
     );
-    // 3. Check if they ahve the permissions to see this order
+    // 3. Check if they have the permissions to see this order
     const ownsOrder = order.user.id === ctx.request.userId;
     const hasPermissionToSeeOrder = ctx.request.user.permissions.includes(
       "ADMIN"
@@ -50,6 +50,25 @@ const Query = {
     }
     // 4. Return the order
     return order;
+  },
+  async orders(parent, args, ctx, info) {
+    const { userId } = ctx.request;
+    // 1. Make sure they are logged in
+    if (!userId) {
+      throw new Error("You aren't logged in!");
+    }
+    // 2. Query the current user Orders
+    const orderlist = await ctx.db.query.orders(
+      {
+        where: {
+          user: { id: userId }
+        }
+      },
+      info
+    );
+    // 3. Check if they own the order or have permission to view
+    // 4. Return the list of orders associated with the user
+    return orderlist;
   }
 };
 
