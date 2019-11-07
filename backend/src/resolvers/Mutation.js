@@ -276,7 +276,6 @@ const Mutations = {
   },
   async createOrder(parent, args, ctx, info) {
     // 1. Query the current user and make sure they are signed in
-    console.log("*****", args.token);
     const { userId } = ctx.request;
     if (!userId)
       throw new Error("You must be signed in to complete this action");
@@ -289,7 +288,7 @@ const Mutations = {
         cart { 
           id 
           quantity
-          item { title price id description image}
+          item { title price id description image largeImage}
         }}`
     );
     // 2. recalculate the total of the price
@@ -299,22 +298,42 @@ const Mutations = {
     );
     console.log(`Going to charge for a total of ${amount}`);
     // 3. Create the stripe charge(Turn token into money)
-    // const customa = await stripe.customers.create({
-    //   name: "Jeff Zenj",
-    //   address: "321cca8846c784b6f2d6ba628f8502a5fb0683ae"
-    // });
     const charge = await stripe.charges.create({
       amount: amount,
       currency: "usd",
       source: args.token,
-      description: `Charge for jeff`
+      description: `Charge for ${user.name}`
       // address: "8149 Alderwood Drive"
       // customer: "cus_G85aKIfPXuSJRd"
     });
     // 4. Convert the CartItems to OrderItems
+    const orderItems = user.cart.map(cartItem => {
+      const orderItem = {
+        ...cartItem.item,
+        quantity: cartItem.quantity,
+        user: { connect: { id: userId } }
+      };
+      delete orderItem.id;
+      return orderItem;
+    });
     // 5. Create the Order
+    const order = await ctx.db.mutation.createOrder({
+      data: {
+        total: charge.amount,
+        charge: charge.id,
+        items: { create: orderItems },
+        user: { connect: { id: userId } }
+      }
+    });
     // 6. Clean up - clear the users cart, delete cartItems
+    const cartItemIds = user.cart.map(cartItem => cartItem.id);
+    await ctx.db.mutation.deleteManyCartItems({
+      where: {
+        id_in: cartItemIds
+      }
+    });
     // 7. Return the order to the Client
+    return order;
   }
 };
 
