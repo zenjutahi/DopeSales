@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-import { formartDistance } from "date-fns";
+import { formatDistance } from "date-fns";
 import Link from "next/link";
 import gql from "graphql-tag";
 import styled from "styled-components";
@@ -26,7 +26,6 @@ const USERS_ORDER_LIST_QUERY = gql`
 `;
 
 const OrderUl = styled.ul`
-  display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
 `;
@@ -41,17 +40,39 @@ class OrderList extends React.Component {
           console.log(orders);
           return (
             <div>
-              <h4>You have {orders.length} Orders 💁‍♂️ </h4>
+              <h2>You have {orders.length} Orders 💁‍♂️ </h2>
               <OrderUl>
                 {orders.map(order => (
-                  <OrderItemStyles>
+                  <OrderItemStyles key={order.id}>
                     <Link
                       href={{
                         pathname: "/order",
                         query: { id: order.id }
                       }}
                     >
-                      <a>Hi</a>
+                      <a>
+                        <div className="order-meta">
+                          <p>
+                            {order.items.reduce(
+                              (tally, item) => tally + item.quantity,
+                              0
+                            )}{" "}
+                            Items
+                          </p>
+                          <p>{order.items.length} Products</p>
+                          <p>{formatDistance(order.createdAt, new Date())}</p>
+                          <p>{formatMoney(order.total)}</p>
+                        </div>
+                        <div className="images">
+                          {order.items.map(item => (
+                            <img
+                              key={item.id}
+                              src={item.image}
+                              alt={item.title}
+                            />
+                          ))}
+                        </div>
+                      </a>
                     </Link>
                   </OrderItemStyles>
                 ))}
