@@ -12,7 +12,6 @@ class UserAccount extends React.Component {
         {({ data: { me }, error, loading }) => {
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;
-          console.log(me);
           return (
             <OrderStyles>
               <Head>
