@@ -8,7 +8,7 @@
     "playground": "graphql playground --dotenv variables.env",
     "test": "jest",
     "deploy": "prisma deploy --env-file variables.env",
-    "deployies": "prisma deploy --env-file variables.env --force",
+    "deployie": "prisma deploy --env-file variables.env --force",
     "dev": "npm-run-all --parallel debug playground"
   },
   "dependencies": {
