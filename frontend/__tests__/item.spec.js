@@ -1,5 +1,6 @@
 import ItemComponent from "../components/Item";
 import { shallow } from "enzyme";
+import toJSON from "enzyme-to-json";
 
 const fakeItem = {
   id: "adcde1234",
@@ -33,5 +34,9 @@ describe("<Item/>", () => {
     expect(buttonList.children()).toHaveLength(3);
     expect(buttonList.find("Link")).toBeTruthy();
     expect(buttonList.find("AddToCart")).toHaveLength(1);
+  });
+  // Working with snapshots
+  it("renders the Item snapshot", () => {
+    expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });
