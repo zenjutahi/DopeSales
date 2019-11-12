@@ -27,22 +27,19 @@ describe("<SingleItem/>", () => {
     expect(wrapper.text()).toContain("Loading....");
     await wait();
     wrapper.update();
-    console.log(wrapper.debug());
     expect(toJSON(wrapper.find("h2"))).toMatchSnapshot();
     expect(toJSON(wrapper.find("img"))).toMatchSnapshot();
     expect(toJSON(wrapper.find("p"))).toMatchSnapshot();
   });
 
-  it("Errors with a not found item", async () => {
+  it("Errors with a No item found", async () => {
     const mocks = [
       {
         // when someone makes a request with this query and varibale combo
         request: { query: SINGLE_ITEM_QUERY, variables: { id: "123" } },
         // return this fake data (mocked data)
         result: {
-          data: {
-            errors: [{ message: "No item Found for" }]
-          }
+          errors: [{ message: "No item found for" }]
         }
       }
     ];
@@ -52,6 +49,9 @@ describe("<SingleItem/>", () => {
       </MockedProvider>
     );
     await wait();
-    expect(wrapper.text()).toContain("Items Not found");
+    wrapper.update();
+    const item = wrapper.find('[data-test="graphql-error"]');
+    expect(item.text()).toContain("No item found for");
+    expect(toJSON(item)).toMatchSnapshot();
   });
 });
