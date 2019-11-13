@@ -28,10 +28,11 @@ class RequestReset extends Component {
           return (
             <Form
               method="post"
+              data-test="form"
               onSubmit={async e => {
                 e.preventDefault();
+                console.log("******", e.target.value);
                 const res = await requestReset();
-                console.log(res);
                 this.setState({ email: "" });
               }}
             >
@@ -40,7 +41,7 @@ class RequestReset extends Component {
                 <Error error={error} />
                 {!error && !loading && called && (
                   <FlashMessage duration={4000}>
-                    <SMessage>
+                    <SMessage data-test="message">
                       Success! Check your email for the reset link!
                     </SMessage>
                   </FlashMessage>
@@ -66,3 +67,4 @@ class RequestReset extends Component {
 }
 
 export default RequestReset;
+export { REQUEST_RESET_MUTATION };
