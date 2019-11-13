@@ -1,11 +1,9 @@
 import { mount } from "enzyme";
-import toJSON from "enzyme-to-json";
 import wait from "waait";
 import PleaseSignIn from "../components/PleaseSignIn";
 import { CURRENT_USER_QUERY } from "../components/User";
 import { MockedProvider } from "react-apollo/test-utils";
 import { fakeUser } from "../lib/testUtils";
-import { wrap } from "module";
 
 const notSignedInMocks = [
   {
@@ -47,7 +45,6 @@ describe("<PleaseSignIn", () => {
     );
     await wait();
     wrapper.update();
-    console.log(wrapper.debug());
     // you could use either
     expect(wrapper.find("Hey").exists()).toBe(true);
     expect(wrapper.contains(<Hey />)).toBe(true);
