@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Query } from "react-apollo";
 import { formatDistance } from "date-fns";
 import Link from "next/link";
