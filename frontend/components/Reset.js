@@ -68,7 +68,6 @@ class Reset extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 const res = await requestReset();
-                console.log(res);
                 this.setState({ password: "", confirmPassword: "" });
                 Router.push(`/items`);
               }}
