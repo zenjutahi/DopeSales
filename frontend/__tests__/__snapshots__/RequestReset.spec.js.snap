@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<RequestReset/> calls the mutation 1`] = `
+<div
+  className="SMessage-sc-1eh2f1c-0 Kdxbb"
+  data-test="message"
+>
+  Success! Check your email for the reset link!
+</div>
+`;
+
 exports[`<RequestReset/> renders and matches snapshot 1`] = `
 <form
   className="Form-sc-1xszr8q-0 cAFrWY"
