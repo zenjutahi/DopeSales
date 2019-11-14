@@ -10,6 +10,9 @@ const CURRENT_USER_QUERY = gql`
       name
       permissions
       createdAt
+      orders {
+        id
+      }
       cart {
         id
         quantity
