@@ -43,10 +43,10 @@ describe("<RequestReset/>", () => {
     wrapper.find("form").simulate("submit");
     await wait();
     wrapper.update();
-    const yy = wrapper.find('div[data-test="message"]');
-    console.log(yy.debug());
-    expect(yy.text()).toContain(
+    const message = wrapper.find('div[data-test="message"]');
+    expect(message.text()).toContain(
       "Success! Check your email for the reset link!"
     );
+    expect(toJSON(message)).toMatchSnapshot();
   });
 });
