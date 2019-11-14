@@ -26,7 +26,6 @@ class Signup extends Component {
     password: ""
   };
   saveToState = e => {
-    console.log([e.target.name]);
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
@@ -43,7 +42,6 @@ class Signup extends Component {
               onSubmit={async e => {
                 e.preventDefault();
                 const res = await signup();
-                console.log(res);
                 this.setState({ name: "", email: "", password: "" });
               }}
             >
@@ -91,3 +89,4 @@ class Signup extends Component {
 }
 
 export default Signup;
+export { SIGNUP_MUTATION };
