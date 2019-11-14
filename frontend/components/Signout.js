@@ -27,14 +27,8 @@ class Signout extends Component {
                 e.preventDefault();
                 const res = await signout();
                 const message = res.data.signout.message;
-                console.log(message);
                 if (message) {
                   Router.push(`/signup`);
-                  // return (
-                  //   <FlashMessage duration={4000} persistOnHover={true}>
-                  //     <p>{message}</p>
-                  //   </FlashMessage>
-                  // );
                 }
               }}
             >
