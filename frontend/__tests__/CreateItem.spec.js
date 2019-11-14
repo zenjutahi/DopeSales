@@ -17,6 +17,7 @@ global.fetch = jest.fn().mockResolvedValue({
 });
 
 describe("<CreateItem", () => {
+  const item = fakeItem();
   it("renders and matches snapshot", async () => {
     const wrapper = mount(
       <MockedProvider>
@@ -45,7 +46,6 @@ describe("<CreateItem", () => {
   });
 
   it("handles state updating", async () => {
-    const item = fakeItem();
     const wrapper = mount(
       <MockedProvider>
         <CreateItem />
@@ -68,7 +68,6 @@ describe("<CreateItem", () => {
   });
 
   it("creates an item when the form is submitted", async () => {
-    const item = fakeItem();
     const mocks = [
       {
         request: {
