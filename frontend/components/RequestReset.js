@@ -31,7 +31,6 @@ class RequestReset extends Component {
               data-test="form"
               onSubmit={async e => {
                 e.preventDefault();
-                console.log("******", e.target.value);
                 const res = await requestReset();
                 this.setState({ email: "" });
               }}
