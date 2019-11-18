@@ -45,30 +45,34 @@ class TakeMyMoney extends React.Component {
   render() {
     return (
       <User>
-        {({ data: { me } }) => (
-          <Mutation
-            mutation={CREATE_ORDER_MUTATION}
-            refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-          >
-            {createOrder => (
-              <StripeCheckout
-                amount={calcTotalPrice(me.cart)}
-                name="Sick Fits"
-                description={`Order of ${totalItems(me.cart)} Items`}
-                image={me.cart[0] && me.cart[0].item.image}
-                stripeKey="pk_test_YqJrs1UtloEVI2luOn8qYrY300jeQSW5UX"
-                currency="USD"
-                email={me.email}
-                token={res => this.onToken(res, createOrder)}
-              >
-                {this.props.children}
-              </StripeCheckout>
-            )}
-          </Mutation>
-        )}
+        {({ data: { me }, loading }) => {
+          if (loading) return null;
+          return (
+            <Mutation
+              mutation={CREATE_ORDER_MUTATION}
+              refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+            >
+              {createOrder => (
+                <StripeCheckout
+                  amount={calcTotalPrice(me.cart)}
+                  name="Sick Fits"
+                  description={`Order of ${totalItems(me.cart)} Items`}
+                  image={me.cart[0] && me.cart[0].item.image}
+                  stripeKey="pk_test_YqJrs1UtloEVI2luOn8qYrY300jeQSW5UX"
+                  currency="USD"
+                  email={me.email}
+                  token={res => this.onToken(res, createOrder)}
+                >
+                  {this.props.children}
+                </StripeCheckout>
+              )}
+            </Mutation>
+          );
+        }}
       </User>
     );
   }
 }
 
 export default TakeMyMoney;
+export { CREATE_ORDER_MUTATION };
