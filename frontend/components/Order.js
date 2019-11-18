@@ -42,13 +42,13 @@ class Order extends React.Component {
           if (loading) return <p>Loading...</p>;
           const order = data.order;
           return (
-            <OrderStyles>
+            <OrderStyles data-test="order">
               <Head>
                 <title>Dope Sales - Order</title>
               </Head>
               <p>
                 <span>Order ID :</span>
-                <span>{this.props.id}</span>
+                <span id="orderId">{this.props.id}</span>
               </p>
               <p>
                 <span>Charge :</span>
@@ -60,7 +60,7 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Order Total :</span>
-                <span>{formartMoney(order.total)}</span>
+                <span id="orderTotal">{formartMoney(order.total)}</span>
               </p>
               <p>
                 <span>Item Count :</span>
@@ -89,3 +89,4 @@ class Order extends React.Component {
 }
 
 export default Order;
+export { SINGLE_ORDER_QUERY };
