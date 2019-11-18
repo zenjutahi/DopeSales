@@ -5,7 +5,6 @@ import { MockedProvider } from "react-apollo/test-utils";
 import Cart, { LOCAL_STATE_QUERY } from "../components/Cart";
 import { CURRENT_USER_QUERY } from "../components/User";
 import { fakeUser, fakeCartItem } from "../lib/testUtils";
-import { exportAllDeclaration } from "@babel/types";
 
 const mocks = [
   {
