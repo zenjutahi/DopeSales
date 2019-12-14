@@ -26,8 +26,8 @@ const Center = styled.div`
 
 const ItemsList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  grid-gap: 20px;
   width: 100%;
   margin: 0 auto;
 `;
