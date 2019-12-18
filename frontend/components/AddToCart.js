@@ -27,7 +27,14 @@ class AddToCart extends React.Component {
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(addToCart, { loading }) => (
-          <CartButton onClick={addToCart} disabled={loading}>
+          <CartButton
+            onClick={() => {
+              addToCart().catch(err => {
+                alert(err.message);
+              });
+            }}
+            disabled={loading}
+          >
             Add{loading && "ing"} To Cart 🛒
           </CartButton>
         )}
