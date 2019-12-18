@@ -31,6 +31,10 @@ const Mutations = {
     return item;
   },
   updateItem(parent, args, ctx, info) {
+    // TODO: check if they are logged
+    if (!ctx.request.userId) {
+      throw new Error("You must be logged in to complete that action!! 😉😉");
+    }
     // first take a copy of the updates
     const updates = { ...args };
     // remove the ID from the updates
@@ -47,10 +51,14 @@ const Mutations = {
     );
   },
   async deleteItem(parent, args, ctx, info) {
+    // 1. Check if they are logged in
+    if (!ctx.request.userId) {
+      throw new Error("You must be logged in to complete that action!! 😉😉");
+    }
     const where = { id: args.id };
-    // 1. find the item
+    // 2. Find the item
     const item = await ctx.db.query.item({ where }, `{ id title user { id }}`);
-    // 2. check if they own that item, or have the permissions
+    // 3. Check if they own that item, or have the permissions
     const ownsItem = item.user.id === ctx.request.userId;
     const hasPermission = ctx.request.user.permissions.some(permission =>
       ["ADMIN", "BOSS", "ITEMDELETE"].includes(permission)
@@ -59,7 +67,7 @@ const Mutations = {
       throw new Error("You ain't allowed to complete that action!! 😉😉");
     }
 
-    // 3. delete it
+    // 4. Delete it
     return ctx.db.mutation.deleteItem({ where }, info);
   },
   async signup(parent, args, ctx, info) {
@@ -135,8 +143,8 @@ const Mutations = {
       from: "zenjy@zen.com",
       to: user.email,
       subject: "Your Password Reset Token",
-      html: makeANiceEmail(`Your Password Reset Token is 
-              here! \n\n 
+      html: makeANiceEmail(`Your Password Reset Token is
+              here! \n\n
               <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}
               ">Click Here to Reset</a>`)
     });
@@ -284,9 +292,9 @@ const Mutations = {
       `{
         id
         name
-        email 
-        cart { 
-          id 
+        email
+        cart {
+          id
           quantity
           item { title price id description image largeImage}
         }}`
