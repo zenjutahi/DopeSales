@@ -1,12 +1,12 @@
 {
-  "name": "sick-fits-frontend",
+  "name": "dope-sales-frontend",
   "version": "1.0.0",
-  "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
+  "description": "Dope Sales! An example React, GraphQL, Next and Apollo",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7770",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start",
     "test": "NODE_ENV=test jest --watch",
     "test-win": "SET NODE_ENV=test&& jest --watch",
     "heroku-postbuild": "next build"
