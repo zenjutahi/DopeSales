@@ -21,7 +21,7 @@ server.express.use((req, res, next) => {
   next();
 });
 
-// TODO use express middleware to populate current user
+// TODO use express middleware to populate current user && sample
 server.express.use(async (req, res, next) => {
   // If they are not logged in Skip this!
   if (!req.userId) return next();
