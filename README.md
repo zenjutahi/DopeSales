@@ -1,12 +1,12 @@
-#DOPESALES PLATFORM
+# DOPESALES PLATFORM
  This is a React & GraphQl based platform. It also combines several other technologies. It was started to be open to contribution and improvemnts.
 
  Its a basic e-commerce platfrom.   
 
 ## Technologies Used
-### FRONTEND
+### `FRONTEND`
 #### React.js <> Apollo Client (NextJS for Routing)
-### BACKEND
+### `BACKEND`
 #### GraphQL Yoga <> Prisma (Express for Backend-Logic)
 
 Progress Thus Far...
